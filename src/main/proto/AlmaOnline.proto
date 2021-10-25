@@ -9,4 +9,10 @@ option objc_class_prefix = "AO";
 
 package almaonline;
 
+// simple rpc: client sends request -> put rpc in the beginning
+// server-side streaming rpc: servers returns stream of messages -> put 'stream' before the response type
+// client-side streaming rpc: client sends stream of messages -> put 'stream' before the request type
+// bidirectional streaming rpc: put 'stream' both before request and response type
+// https://grpc.io/docs/languages/java/basics/
+
 service AlmaOnline {}
