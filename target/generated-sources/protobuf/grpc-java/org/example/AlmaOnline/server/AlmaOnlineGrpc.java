@@ -14,6 +14,37 @@ public final class AlmaOnlineGrpc {
   public static final String SERVICE_NAME = "almaonline.AlmaOnline";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<org.example.AlmaOnline.server.GetRestaurantsRequest,
+      org.example.AlmaOnline.server.RestaurantInfos> getGetRestaurantsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getRestaurants",
+      requestType = org.example.AlmaOnline.server.GetRestaurantsRequest.class,
+      responseType = org.example.AlmaOnline.server.RestaurantInfos.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<org.example.AlmaOnline.server.GetRestaurantsRequest,
+      org.example.AlmaOnline.server.RestaurantInfos> getGetRestaurantsMethod() {
+    io.grpc.MethodDescriptor<org.example.AlmaOnline.server.GetRestaurantsRequest, org.example.AlmaOnline.server.RestaurantInfos> getGetRestaurantsMethod;
+    if ((getGetRestaurantsMethod = AlmaOnlineGrpc.getGetRestaurantsMethod) == null) {
+      synchronized (AlmaOnlineGrpc.class) {
+        if ((getGetRestaurantsMethod = AlmaOnlineGrpc.getGetRestaurantsMethod) == null) {
+          AlmaOnlineGrpc.getGetRestaurantsMethod = getGetRestaurantsMethod =
+              io.grpc.MethodDescriptor.<org.example.AlmaOnline.server.GetRestaurantsRequest, org.example.AlmaOnline.server.RestaurantInfos>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getRestaurants"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.example.AlmaOnline.server.GetRestaurantsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.example.AlmaOnline.server.RestaurantInfos.getDefaultInstance()))
+              .setSchemaDescriptor(new AlmaOnlineMethodDescriptorSupplier("getRestaurants"))
+              .build();
+        }
+      }
+    }
+    return getGetRestaurantsMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -62,8 +93,25 @@ public final class AlmaOnlineGrpc {
    */
   public static abstract class AlmaOnlineImplBase implements io.grpc.BindableService {
 
+    /**
+     * <pre>
+     *of stream RestaurantInfo
+     * </pre>
+     */
+    public void getRestaurants(org.example.AlmaOnline.server.GetRestaurantsRequest request,
+        io.grpc.stub.StreamObserver<org.example.AlmaOnline.server.RestaurantInfos> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRestaurantsMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getGetRestaurantsMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                org.example.AlmaOnline.server.GetRestaurantsRequest,
+                org.example.AlmaOnline.server.RestaurantInfos>(
+                  this, METHODID_GET_RESTAURANTS)))
           .build();
     }
   }
@@ -81,6 +129,17 @@ public final class AlmaOnlineGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new AlmaOnlineStub(channel, callOptions);
     }
+
+    /**
+     * <pre>
+     *of stream RestaurantInfo
+     * </pre>
+     */
+    public void getRestaurants(org.example.AlmaOnline.server.GetRestaurantsRequest request,
+        io.grpc.stub.StreamObserver<org.example.AlmaOnline.server.RestaurantInfos> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getGetRestaurantsMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -95,6 +154,17 @@ public final class AlmaOnlineGrpc {
     protected AlmaOnlineBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new AlmaOnlineBlockingStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     *of stream RestaurantInfo
+     * </pre>
+     */
+    public java.util.Iterator<org.example.AlmaOnline.server.RestaurantInfos> getRestaurants(
+        org.example.AlmaOnline.server.GetRestaurantsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getGetRestaurantsMethod(), getCallOptions(), request);
     }
   }
 
@@ -113,6 +183,7 @@ public final class AlmaOnlineGrpc {
     }
   }
 
+  private static final int METHODID_GET_RESTAURANTS = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -131,6 +202,10 @@ public final class AlmaOnlineGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_GET_RESTAURANTS:
+          serviceImpl.getRestaurants((org.example.AlmaOnline.server.GetRestaurantsRequest) request,
+              (io.grpc.stub.StreamObserver<org.example.AlmaOnline.server.RestaurantInfos>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -192,6 +267,7 @@ public final class AlmaOnlineGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new AlmaOnlineFileDescriptorSupplier())
+              .addMethod(getGetRestaurantsMethod())
               .build();
         }
       }

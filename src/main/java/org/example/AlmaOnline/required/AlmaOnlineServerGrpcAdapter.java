@@ -26,5 +26,6 @@ public class AlmaOnlineServerGrpcAdapter extends AlmaOnlineGrpc.AlmaOnlineImplBa
         this.service = this.getInitializer().initialize();
     }
 
+
     // -- Put the code for your implementation down below -- //
 }

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
+
 option java_multiple_files = true;
 option java_package = "org.example.AlmaOnline.server";
 option java_outer_classname = "AlmaOnlineProto";
@@ -15,4 +16,15 @@ package almaonline;
 // bidirectional streaming rpc: put 'stream' both before request and response type
 // https://grpc.io/docs/languages/java/basics/
 
-service AlmaOnline {}
+service AlmaOnline {
+    rpc getRestaurants(GetRestaurantsRequest) returns (stream RestaurantInfos); //of stream RestaurantInfo
+
+}
+message GetRestaurantsRequest {
+}
+
+message RestaurantInfos{
+    string id=1;
+    string name=2;
+}
+
