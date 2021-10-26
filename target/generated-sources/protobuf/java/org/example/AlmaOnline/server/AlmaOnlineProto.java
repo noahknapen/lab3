@@ -20,10 +20,15 @@ public final class AlmaOnlineProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_almaonline_GetRestaurantsRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_almaonline_RestaurantInfos_descriptor;
+    internal_static_almaonline_GetRestaurantsReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_almaonline_RestaurantInfos_fieldAccessorTable;
+      internal_static_almaonline_GetRestaurantsReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_almaonline_RestaurantInfo2_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_almaonline_RestaurantInfo2_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -34,18 +39,22 @@ public final class AlmaOnlineProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\020AlmaOnline.proto\022\nalmaonline\032\037google/p" +
-      "rotobuf/timestamp.proto\"\027\n\025GetRestaurant" +
-      "sRequest\"+\n\017RestaurantInfos\022\n\n\002id\030\001 \001(\t\022" +
-      "\014\n\004name\030\002 \001(\t2`\n\nAlmaOnline\022R\n\016getRestau" +
-      "rants\022!.almaonline.GetRestaurantsRequest" +
-      "\032\033.almaonline.RestaurantInfos0\001B7\n\035org.e" +
-      "xample.AlmaOnline.serverB\017AlmaOnlineProt" +
-      "oP\001\242\002\002AOb\006proto3"
+      "rotobuf/timestamp.proto\032\036google/rpc/erro" +
+      "r_details.proto\"\027\n\025GetRestaurantsRequest" +
+      "\"L\n\023GetRestaurantsReply\0225\n\020restaurant_in" +
+      "fos\030\001 \003(\0132\033.almaonline.RestaurantInfo2\"+" +
+      "\n\017RestaurantInfo2\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 " +
+      "\001(\t2d\n\nAlmaOnline\022V\n\016getRestaurants\022!.al" +
+      "maonline.GetRestaurantsRequest\032\037.almaonl" +
+      "ine.GetRestaurantsReply\"\000B7\n\035org.example" +
+      ".AlmaOnline.serverB\017AlmaOnlineProtoP\001\242\002\002" +
+      "AOb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
+          com.google.rpc.ErrorDetailsProto.getDescriptor(),
         });
     internal_static_almaonline_GetRestaurantsRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -53,13 +62,20 @@ public final class AlmaOnlineProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_almaonline_GetRestaurantsRequest_descriptor,
         new java.lang.String[] { });
-    internal_static_almaonline_RestaurantInfos_descriptor =
+    internal_static_almaonline_GetRestaurantsReply_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_almaonline_RestaurantInfos_fieldAccessorTable = new
+    internal_static_almaonline_GetRestaurantsReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_almaonline_RestaurantInfos_descriptor,
+        internal_static_almaonline_GetRestaurantsReply_descriptor,
+        new java.lang.String[] { "RestaurantInfos", });
+    internal_static_almaonline_RestaurantInfo2_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_almaonline_RestaurantInfo2_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_almaonline_RestaurantInfo2_descriptor,
         new java.lang.String[] { "Id", "Name", });
     com.google.protobuf.TimestampProto.getDescriptor();
+    com.google.rpc.ErrorDetailsProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

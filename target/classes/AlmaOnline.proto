@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/rpc/error_details.proto";
 
 
 option java_multiple_files = true;
@@ -17,13 +18,15 @@ package almaonline;
 // https://grpc.io/docs/languages/java/basics/
 
 service AlmaOnline {
-    rpc getRestaurants(GetRestaurantsRequest) returns (stream RestaurantInfos); //of stream RestaurantInfo
+    rpc getRestaurants(GetRestaurantsRequest) returns (GetRestaurantsReply){}; //of stream RestaurantInfo
 
 }
 message GetRestaurantsRequest {
 }
-
-message RestaurantInfos{
+message GetRestaurantsReply{
+    repeated RestaurantInfo2 restaurant_infos = 1;;
+}
+message RestaurantInfo2{
     string id=1;
     string name=2;
 }

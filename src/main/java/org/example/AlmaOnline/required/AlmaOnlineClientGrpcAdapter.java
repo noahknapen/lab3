@@ -4,6 +4,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import org.example.AlmaOnline.provided.client.*;
 import org.example.AlmaOnline.server.*;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 // AlmaOnlineClientGrpcAdapter provides your own implementation of the AlmaOnlineClientAdapter
@@ -13,7 +15,18 @@ public class AlmaOnlineClientGrpcAdapter implements AlmaOnlineClientAdapter {
     public List<RestaurantInfo> getRestaurants(AlmaOnlineGrpc.AlmaOnlineBlockingStub stub) {
         var request = GetRestaurantsRequest.newBuilder()
                 .build();
-        return (List<RestaurantInfo>) stub.getRestaurants(request);
+        var response = stub.getRestaurants(request);
+        List<RestaurantInfo2> restaurantInfos=response.getRestaurantInfosList();
+
+        List<RestaurantInfo> resto_list= new ArrayList<RestaurantInfo>();
+        for (RestaurantInfo2 resto:restaurantInfos){
+            RestaurantInfo restojuist= new RestaurantInfo(resto.getId(),resto.getName());
+            resto_list.add(restojuist);
+
+
+        }
+
+        return resto_list;
     }
 
 
